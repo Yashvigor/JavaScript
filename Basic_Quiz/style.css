@@ -1,0 +1,162 @@
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: #0d1b2a; 
+  margin: 0;
+  padding: 0;
+  color: #ffffff;
+}
+
+.container {
+  max-width: 600px;
+  margin: 50px auto;
+  padding: 30px;
+  background: #1b263b; 
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+
+h1 {
+  text-align: center;
+  color: #61dafb; 
+}
+
+label {
+  font-size: 18px;
+  color: #cfe2f3;
+}
+
+select {
+  padding: 10px;
+  width: 100%;
+  margin: 10px 0 20px;
+  font-size: 16px;
+  border: 2px solid #3a506b;
+  border-radius: 8px;
+  background-color: #1c2e4a;
+  color: #ffffff;
+}
+
+button {
+  padding: 12px 24px;
+  background-color: #1e90ff;
+  color: white;
+  border: none;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+button:hover {
+  background-color: #1565c0;
+}
+
+#question {
+  font-size: 20px;
+  margin: 20px 0;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  background: #2e3b55;
+  padding: 12px 18px;
+  margin-bottom: 10px;
+  border-radius: 6px;
+  border: 1px solid #3a506b;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+li:hover {
+  background-color: #3a506b;
+}
+
+.correct {
+  background-color: #43a047 !important;
+  color: white;
+  border-color: #2e7d32;
+}
+
+.incorrect {
+  background-color: #e53935 !important;
+  color: white;
+  border-color: #b71c1c;
+}
+
+.question-meta {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  font-size: 14px;
+  color: #a9c6ea;
+}
+
+#result-section p {
+  font-size: 18px;
+  margin: 8px 0;
+}
+
+.timer-container {
+  position: relative;
+  width: 50px;
+  height: 50px;
+}
+
+.timer-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 14px;
+  font-weight: bold;
+  color: #90caf9;
+}
+
+.progress-ring {
+  transform: rotate(-90deg);
+}
+
+.progress-ring__circle {
+  transition: stroke-dashoffset 1s linear;
+  stroke: #90caf9;
+}
+
+body.light-theme {
+  background: #f0f0f0;
+  color: #222;
+}
+body.light-theme .container {
+  background: #ffffff;
+  color: #222;
+}
+body.light-theme select,
+body.light-theme li,
+body.light-theme button {
+  background: #f5f5f5;
+  color: #000;
+  border-color: #ccc;
+}
+body.light-theme li:hover {
+  background: #ddd;
+}
+.theme-toggle {
+  text-align: right;
+  padding: 10px;
+}
+#auth-section {
+  max-width: 400px;
+  margin: 100px auto;
+  text-align: center;
+}
+#auth-section input {
+  display: block;
+  margin: 10px auto;
+  padding: 10px;
+  width: 80%;
+  border-radius: 5px;
+  border: 1px solid #888;
+}

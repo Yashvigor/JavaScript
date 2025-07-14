@@ -1,1 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Programming Quiz App</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="theme-toggle">
+    <button onclick="toggleTheme()">Toggle Theme</button>
+  </div>
 
+  <div id="auth-section">
+    <h1>Login / Signup</h1>
+    <input type="text" id="username" placeholder="Username" />
+    <input type="password" id="password" placeholder="Password" />
+    <button onclick="signup()">Signup</button>
+    <button onclick="login()">Login</button>
+  </div>
+
+  <div class="container" id="quiz-app" style="display: none;">
+    <h1>Programming Quiz App</h1>
+
+    <div id="category-section">
+      <label for="category">Choose a Category:</label>
+      <select id="category">
+        <option value="programming">Programming</option>
+        <option value="datastructures">Data Structures</option>
+        <option value="networks">Computer Networks</option>
+        <option value="os">Operating System</option>
+        <option value="dbms">DBMS</option>
+      </select>
+      <button onclick="startQuiz()">Start Quiz</button>
+    </div>
+
+    <div id="quiz-section" style="display: none;">
+      <div class="question-meta">
+        <span id="question-count"></span>
+        <span id="live-score" style="float:right;">Score: 0</span>
+        <div class="timer-container">
+          <svg class="progress-ring" width="50" height="50">
+            <circle class="progress-ring__circle" stroke="#1976d2" stroke-width="5" fill="transparent" r="20" cx="25" cy="25"/>
+          </svg>
+          <span id="time" class="timer-text">15</span>
+        </div>
+      </div>
+
+      <div id="question"></div>
+      <ul id="options"></ul>
+      <button id="next-btn" onclick="handleNext()" style="display: none;">Next</button>
+    </div>
+
+    <div id="result-section" style="display: none;">
+      <p id="score-display"></p>
+      <p id="correct-answers"></p>
+      <p id="incorrect-answers"></p>
+      <p id="high-score-display"></p>
+      <div id="review-section" style="margin-top: 20px;"></div>
+      <button onclick="restartQuiz()">Restart Quiz</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
