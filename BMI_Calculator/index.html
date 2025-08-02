@@ -1,1 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>BMI Calculator - Dark Mode</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #121212;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      color: #fff;
+    }
 
+    .container {
+      background: #1e1e1e;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6);
+      text-align: center;
+      max-width: 360px;
+      width: 90%;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+      color: #f1f1f1;
+    }
+
+    input[type="number"] {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border: none;
+      background: #2a2a2a;
+      color: #fff;
+      border-radius: 10px;
+      font-size: 16px;
+    }
+
+    input[type="number"]::placeholder {
+      color: #aaa;
+    }
+
+    button {
+      padding: 12px;
+      width: 48%;
+      border: none;
+      font-size: 16px;
+      border-radius: 10px;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: background 0.3s;
+    }
+
+    .calculate {
+      background-color: #4a90e2;
+      color: white;
+    }
+
+    .calculate:hover {
+      background-color: #357ABD;
+    }
+
+    .reset {
+      background-color: #e74c3c;
+      color: white;
+    }
+
+    .reset:hover {
+      background-color: #c0392b;
+    }
+
+    #results {
+      margin-top: 20px;
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .underweight {
+      color: #e67e22;
+    }
+
+    .normal {
+      color: #27ae60;
+    }
+
+    .overweight {
+      color: #f39c12;
+    }
+
+    .obese {
+      color: #e74c3c;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>BMI Calculator</h2>
+    <form>
+      <input type="number" id="height" placeholder="Enter height in cm" required />
+      <input type="number" id="weight" placeholder="Enter weight in kg" required />
+      <div style="display: flex; justify-content: space-between; gap: 10px;">
+        <button type="submit" class="calculate">Calculate</button>
+        <button type="button" class="reset" id="resetBtn">Reset</button>
+      </div>
+      <div id="results"></div>
+    </form>
+  </div>
+
+  <script>
+    const form = document.querySelector('form');
+    const resetBtn = document.querySelector('#resetBtn');
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const height = parseInt(document.querySelector('#height').value);
+      const weight = parseInt(document.querySelector('#weight').value);
+      const results = document.querySelector('#results');
+
+      if (!height || height <= 0 || isNaN(height)) {
+        results.innerHTML = `<span style="color:#ff6b6b;">Please enter a valid height</span>`;
+      } else if (!weight || weight <= 0 || isNaN(weight)) {
+        results.innerHTML = `<span style="color:#ff6b6b;">Please enter a valid weight</span>`;
+      } else {
+        const bmi = (weight / ((height * height) / 10000)).toFixed(2);
+        let category = '';
+        let categoryClass = '';
+
+        if (bmi < 18.5) {
+          category = 'Underweight';
+          categoryClass = 'underweight';
+        } else if (bmi >= 18.5 && bmi <= 24.9) {
+          category = 'Normal weight';
+          categoryClass = 'normal';
+        } else if (bmi >= 25 && bmi <= 29.9) {
+          category = 'Overweight';
+          categoryClass = 'overweight';
+        } else {
+          category = 'Obese';
+          categoryClass = 'obese';
+        }
+
+        results.innerHTML = `Your BMI is <span class="${categoryClass}">${bmi}</span><br><span class="${categoryClass}">${category}</span>`;
+      }
+    });
+
+    resetBtn.addEventListener('click', function () {
+      document.querySelector('#height').value = '';
+      document.querySelector('#weight').value = '';
+      document.querySelector('#results').innerHTML = '';
+    });
+  </script>
+</body>
+</html>
