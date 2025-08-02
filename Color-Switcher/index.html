@@ -1,1 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Color Switcher</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
 
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f0f0f0;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background-color 0.3s ease-in-out;
+    }
+
+    .container {
+      background-color: #ffffffcc;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+      text-align: center;
+      width: 320px;
+    }
+
+    h1 {
+      margin-bottom: 25px;
+      font-size: 1.4rem;
+      color: #333;
+    }
+
+    .button-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+    }
+
+    .button {
+      width: 100%;
+      aspect-ratio: 1 / 1; /* Makes buttons square */
+      font-size: 1rem;
+      font-weight: 600;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: transform 0.2s ease, background-color 0.3s;
+    }
+
+    #grey { background-color: grey; color: white; }
+    #white { background-color: white; color: black; border: 1px solid #ccc; }
+    #blue { background-color: royalblue; color: white; }
+    #yellow { background-color: gold; color: black; }
+
+    .button:hover {
+      transform: scale(1.05);
+      opacity: 0.9;
+    }
+
+    @media (max-width: 400px) {
+      .container {
+        width: 90%;
+      }
+      .button {
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Choose Background Color</h1>
+    <div class="button-grid">
+      <button class="button" id="grey">Grey</button>
+      <button class="button" id="white">White</button>
+      <button class="button" id="blue">Blue</button>
+      <button class="button" id="yellow">Yellow</button>
+    </div>
+  </div>
+
+  <script>
+    const buttons = document.querySelectorAll('.button');
+    const body = document.querySelector('body');
+
+    buttons.forEach(button => {
+      button.addEventListener('click', function (e) {
+        const color = e.target.id;
+        switch (color) {
+          case 'grey':
+          case 'white':
+          case 'blue':
+          case 'yellow':
+            body.style.backgroundColor = color;
+            break;
+          default:
+            console.log('Unhandled color:', color);
+        }
+      });
+    });
+  </script>
+</body>
+</html>
