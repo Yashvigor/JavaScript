@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="background-color: black; color: white;">
+    <ul class="language">
+        <li>Javascript</li>
+        <li>DOM</li>
+    </ul>
+    
+    <script>
+     /*   const div=document.createElement('div')
+        div.className="mydiv"
+        div.id="myid"
+        console.log(div)
+        div.setAttribute("title","my title")
+        const para= document.createElement('p')
+        para.innerText="DOM Manipulation"
+        div.appendChild(para)
+        div.style.backgroundColor="red"
+        div.style.color="white"
+        div.style.padding="8px"
+        document.body.appendChild(div)
+        */
+       function newlanguage(langname){
+          const ul=document.querySelector(".language")
+          const newli= document.createElement('li')
+           newli.innerText=langname
+           newli.style.color="white"
+           ul.appendChild(newli)
+         
+       }
+    
+
+        function optilan(langname){
+        const li= document.createElement('li')
+        li.appendChild(document.createTextNode(langname))
+    document.querySelector(".language").appendChild(li)
+         
+}
+        optilan("Python")
+        optilan('Java')
+
+        //Edit
+
+     const sec= document.querySelector("li:nth-child(2)")
+     const newli= document.createElement('li')
+     newli.textContent="C language"
+     sec.replaceWith(newli)       
+     
+        //Edit
+        const first= document.querySelector("li:first-child")
+        first.outerHTML="<li>TypeScript</li>"
+
+
+        //Remove 
+       const last=document.querySelector("li:last-child")
+       last.remove()
+        
+    </script>
+</body>
+</html>

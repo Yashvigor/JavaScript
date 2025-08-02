@@ -1,1 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=script, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="background-color: black; color: white">
+    <div class="parent">
 
+    <!-- only one break is counted by the browser and for that a text node is created other extra line breaks are skipped when trying to print parent's child node -->
+        <div class="day">Monday</div>
+        <div class="day">Tuesday</div>
+        <div class="day">Wednesday</div>
+        <div class="day">Thursday</div>
+    </div>
+    <script>
+        const parent = document.querySelector('.parent')
+      //  console.log(parent.children[2].innerText)
+       // for (let i=0;i < parent.children.length;i++){
+           // console.log(parent.children[i].innerHTML)
+
+       // }
+ parent.children[2].style.color="red"
+
+// console.log(parent.firstElementChild)
+ // console.log(parent.lastElementChild)
+
+ const dayone= document.querySelector(".day")
+ // console.log(dayone);
+ //console.log(dayone.parentElement)
+
+ console.log(dayone.nextElementSibling)
+
+ console.log("Nodes: " ,parent.childNodes)
+
+
+    </script>
+</body>
+</html>
