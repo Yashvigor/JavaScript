@@ -1,1 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Digital Clock</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
+    body {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(to right, #141e30, #243b55);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .clock-container {
+      background: rgba(0, 0, 0, 0.6);
+      padding: 40px 60px;
+      border-radius: 20px;
+      box-shadow: 0 0 30px rgba(0, 255, 255, 0.3);
+    }
+
+    #clock {
+      font-size: 3.5rem;
+      color: #00ffff;
+      text-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff;
+      letter-spacing: 3px;
+      text-align: center;
+    }
+
+    @media (max-width: 500px) {
+      #clock {
+        font-size: 2.5rem;
+      }
+
+      .clock-container {
+        padding: 30px 40px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="clock-container">
+    <div id="clock">00:00:00</div>
+  </div>
+
+  <script>
+    const clock = document.getElementById('clock');
+
+    setInterval(function () {
+      let date = new Date();
+      clock.innerHTML = date.toLocaleTimeString();
+    }, 1000);
+  </script>
+</body>
+</html>
