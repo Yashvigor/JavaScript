@@ -1,1 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sudoku Solution Validator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <div class="top-bar">
+      <span id="timer">⏱️ 00:00</span>
+      <label class="switch">
+        <input type="checkbox" id="themeToggle">
+        <span class="slider"></span>
+      </label>
+    </div>
 
+    <h1>Sudoku Solution Validator</h1>
+    <div class="grid" id="sudokuGrid"></div>
+
+    <div class="buttons">
+      <button onclick="validateSudoku()">Validate Solution</button>
+      <button onclick="resetGrid()">Reset</button>
+      <button onclick="loadPuzzle()">Load Sample Puzzle</button>
+    </div>
+    <p id="result"></p>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
