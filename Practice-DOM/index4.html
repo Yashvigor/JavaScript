@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Improved List</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      height: 100vh;
+      width: 100%;
+      background-color: #f4f4f4;
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+    }
+
+    #input {
+      padding: 10px;
+      width: 300px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 16px;
+    }
+
+    #btn {
+      padding: 10px 20px;
+      margin-left: 10px;
+      font-size: 16px;
+      background-color: #3498db;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    #btn:hover {
+      background-color: #2980b9;
+    }
+
+    ul {
+      margin-top: 30px;
+      width: 400px;
+      list-style-type: none;
+    }
+
+    li {
+      background-color: white;
+      padding: 12px 16px;
+      margin-bottom: 10px;
+      border-radius: 6px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      transition: transform 0.2s;
+    }
+
+    li:hover {
+      transform: scale(1.02);
+    }
+
+    .remove-btn {
+      background-color: #e74c3c;
+      border: none;
+      padding: 6px 12px;
+      color: white;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .remove-btn:hover {
+      background-color: #c0392b;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Task List</h1>
+
+  <div>
+    <input type="text" id="input" placeholder="Enter a task..." />
+    <button id="btn">Add Task</button>
+  </div>
+
+  <ul id="ul"></ul>
+
+  <script>
+    const input = document.querySelector("#input");
+    const btn = document.querySelector("#btn");
+    const ul = document.querySelector("#ul");
+
+    btn.addEventListener("click", function () {
+      const value = input.value.trim();
+
+      if (value === "") {
+        alert("Please enter a task.");
+        return;
+      }
+
+      const li = document.createElement("li");
+      li.innerText = value;
+
+      const remove = document.createElement("button");
+      remove.innerText = "Remove";
+      remove.classList.add("remove-btn");
+
+      // Append remove button to li
+      li.appendChild(remove);
+      ul.appendChild(li);
+
+      // Clear input
+      input.value = "";
+
+      // Remove li on button click
+      remove.addEventListener("click", function () {
+        li.remove();
+      });
+    });
+  </script>
+
+</body>
+</html>
