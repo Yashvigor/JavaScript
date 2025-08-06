@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>List with Live Search</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #e0f7fa, #fff);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px 20px;
+    }
+
+    h2 {
+      font-size: 28px;
+      color: #2c3e50;
+      margin-bottom: 30px;
+    }
+
+    .container {
+      background-color: #ffffff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 450px;
+    }
+
+    .input-group {
+      display: flex;
+      margin-bottom: 15px;
+    }
+
+    input[type="text"] {
+      flex: 1;
+      padding: 10px 15px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      transition: border-color 0.3s ease;
+      outline: none;
+    }
+
+    input[type="text"]:focus {
+      border-color: #3498db;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      margin-left: 10px;
+      background-color: #3498db;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #2980b9;
+    }
+
+    #searchInput {
+      width: 100%;
+      margin-top: 10px;
+      margin-bottom: 20px;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    li {
+      background-color: #f9f9f9;
+      margin-bottom: 10px;
+      padding: 12px 16px;
+      border-radius: 8px;
+      box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05);
+      transition: transform 0.2s;
+    }
+
+    li:hover {
+      transform: scale(1.02);
+      background-color: #e3f2fd;
+    }
+  </style>
+</head>
+<body>
+
+  <h2> List with Live Search</h2>
+
+  <div class="container">
+    <div class="input-group">
+      <input type="text" id="nameInput" placeholder="Add name..." />
+      <button onclick="addToList()">Add</button>
+    </div>
+
+    <input type="text" id="searchInput" placeholder="Search name..." />
+
+    <ul id="nameList"></ul>
+  </div>
+
+  <script>
+    const nameInput = document.getElementById("nameInput");
+    const searchInput = document.getElementById("searchInput");
+    const nameList = document.getElementById("nameList");
+
+    function addToList() {
+      const name = nameInput.value.trim();
+      if (name === "") {
+        alert("Please enter a name");
+        return;
+      }
+
+      const li = document.createElement("li");
+      li.innerText = name;
+      nameList.appendChild(li);
+
+      nameInput.value = "";
+      filterList();
+    }
+
+    function filterList() {
+      const searchTerm = searchInput.value.toLowerCase();
+      const items = document.querySelectorAll("#nameList li");
+
+      items.forEach(item => {
+        const text = item.textContent.toLowerCase();
+        item.style.display = text.includes(searchTerm) ? "block" : "none";
+      });
+    }
+
+    searchInput.addEventListener("input", filterList);
+  </script>
+
+</body>
+</html>
